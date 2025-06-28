@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeliciousBite - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Navbar -->
+<header class="bg-red-500 text-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-2xl font-bold">DeliciousBite</h1>
+        <div class="flex items-center space-x-6">
+            <nav class="space-x-6">
+                <a href="#" class="hover:text-yellow-300">Home</a>
+                <a href="#menu" class="hover:text-yellow-300">Menu</a>
+                <a href="#order" class="hover:text-yellow-300">Order</a>
+                <a href="#contact" class="hover:text-yellow-300">Contact</a>
+            </nav>
+            <!-- Login Button -->
+            <a href="/login" class="bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded-full hover:bg-yellow-300 transition">
+                Login
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-cover bg-center h-screen flex flex-col justify-center items-center text-center text-white" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80');">
+    <div class="bg-black bg-opacity-60 p-8 rounded-lg">
+        <h2 class="text-4xl md:text-6xl font-bold mb-4">Discover Your Next Favorite Dish</h2>
+        <p class="text-lg md:text-2xl mb-6">Fresh. Fast. Tasty.</p>
+        <a href="#menu" class="bg-yellow-400 text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition">Explore Menu</a>
+    </div>
+</section>
+
+<!-- Featured Dishes -->
+<section class="py-16 bg-gray-50" id="menu">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-12 text-red-500">Featured Dishes</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Dish 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1604908554116-098bcd009118?auto=format&fit=crop&w=400&q=60" alt="Burger" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-semibold text-red-500 mb-2">Juicy Burgers</h4>
+                    <p class="text-gray-600">Grilled to perfection with crispy fries on the side.</p>
+                </div>
+            </div>
+            <!-- Dish 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=400&q=60" alt="Pasta" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-semibold text-red-500 mb-2">Italian Pasta</h4>
+                    <p class="text-gray-600">Rich sauces and homemade pasta cooked with love.</p>
+                </div>
+            </div>
+            <!-- Dish 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1598515219347-b07f4e3c0650?auto=format&fit=crop&w=400&q=60" alt="Dessert" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-semibold text-red-500 mb-2">Sweet Treats</h4>
+                    <p class="text-gray-600">End your meal with our heavenly desserts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-red-500 text-white text-center py-6 mt-10">
+    <p>&copy; 2025 DeliciousBite. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
