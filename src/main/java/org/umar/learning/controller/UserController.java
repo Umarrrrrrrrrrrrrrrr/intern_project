@@ -32,7 +32,7 @@ public class UserController {
 
     @PostMapping
     public User createUser(@Valid @RequestBody User user) {
-        return userService.createUser(user);
+        return userService.createUser(user); // ✅ delegate to service layer
     }
 
 

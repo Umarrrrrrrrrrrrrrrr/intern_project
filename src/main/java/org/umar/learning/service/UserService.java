@@ -30,6 +30,17 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    //save user
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    //Find email
+    public User findbyEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
     //Delete users
     public boolean deleteUser(long id) {
         if(userRepository.existsById(id)){

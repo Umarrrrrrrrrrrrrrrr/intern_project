@@ -25,7 +25,7 @@ public class AuthController {
         String email = userMap.get("email");
         String password = userMap.get("password");
 
-        User user = userService.findByEmail(email);
+        User user = userService.findbyEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
             String token = jwtUtil.generateToken(user.getEmail());
@@ -33,5 +33,16 @@ public class AuthController {
         }
 
         return ResponseEntity.status(401).body(Map.of("error", "Invalid email or password"));
+    }
+
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
+        User existingUser = userService.findbyEmail(user.getEmail());
+        if (existingUser != null) {
+            return ResponseEntity.status(409).body(Map.of("error", "Email already in use"));
+        }
+        User savedUser = userService.saveUser(user);
+        return ResponseEntity.ok(Map.of("token", jwtUtil.generateToken(savedUser.getEmail())));
     }
 }

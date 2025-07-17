@@ -23,6 +23,9 @@ public class User {
     @NotBlank(message = "College is required")
     private String college;
 
+    @NotBlank(message = "Please add @gmail.com must required")
+    private String email;
+
     @NotBlank(message = "password is required")
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
@@ -32,11 +35,12 @@ public class User {
     }
 
     //  Parameterized constructor
-    public User(long id, String name, int age, String college, String password) {
+    public User(long id, String name, int age, String college,String email, String password) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.college = college;
+        this.email = email;
         this.password = password;
     }
 
@@ -72,6 +76,12 @@ public class User {
     public void setCollege(String college) {
         this.college = college;
     }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public String getPassword() {
         return password;
     }
@@ -87,6 +97,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", college='" + college + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
