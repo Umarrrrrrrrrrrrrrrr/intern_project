@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 public class Inventory {
     @Id
-    @GeneratedValue(Strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String itemName;
     private int quantity;

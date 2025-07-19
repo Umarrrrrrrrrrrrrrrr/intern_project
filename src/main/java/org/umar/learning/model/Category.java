@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Category {
     @Id
-    @GeneratedValue(Strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     //optional : one category can have many inventory
-    @OneToMany(mappedBy = "Category", cascade = CascadeType.All)
+    @OneToMany(mappedBy = "Category", cascade = CascadeType.ALL)
     private List<Inventory> inventories;
 
     public Category(long id, String name) {}
