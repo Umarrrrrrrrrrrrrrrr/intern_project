@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()    // allow auth endpoints
                         .requestMatchers("/api/users/**", "/api/users").permitAll()   // allow user creation without token (optional)
+                        .requestMatchers("/api/categories/**", "/api/categories").permitAll()
                         .anyRequest().authenticated()
                 )
 
