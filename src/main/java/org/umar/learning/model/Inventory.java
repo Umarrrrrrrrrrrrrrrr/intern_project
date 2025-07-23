@@ -2,6 +2,7 @@ package org.umar.learning.model;
 
 import jakarta.persistence.*;
 
+@Entity
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -10,7 +11,7 @@ public class Inventory {
     private int quantity;
     private double price;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -39,4 +40,6 @@ public class Inventory {
     public void setPrice(double price) {
         this.price = price;
     }
+    public Category getCategory() {return category;}
+    public void setCategory(Category category) {this.category = category;}
 }

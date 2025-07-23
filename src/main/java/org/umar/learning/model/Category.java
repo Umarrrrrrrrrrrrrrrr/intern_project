@@ -38,4 +38,12 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(List<Inventory> inventories) {
+        this.inventories = inventories;
+    }
 }
