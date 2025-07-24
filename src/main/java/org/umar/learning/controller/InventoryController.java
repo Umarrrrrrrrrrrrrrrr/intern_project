@@ -33,4 +33,16 @@ public class InventoryController {
     public Inventory create(@RequestBody Inventory inventory) {
         return inventoryService.save(inventory);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Inventory> update(@PathVariable Long id, @RequestBody Inventory inventory) {
+        Inventory updated = inventoryService.update(id, inventory);
+        return updated != null? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        boolean deleted = inventoryService.delete(id);
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }
