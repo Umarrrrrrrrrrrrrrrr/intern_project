@@ -3,8 +3,8 @@ package org.umar.learning.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,6 +26,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()    // allow auth endpoints
                         .requestMatchers("/api/users/**", "/api/users").permitAll()   // allow user creation without token (optional)
                         .requestMatchers("/api/categories/**", "/api/categories").permitAll()
+                        .requestMatchers("/api/inventory/**", "/api/inventory").permitAll()
                         .anyRequest().authenticated()
                 )
 
