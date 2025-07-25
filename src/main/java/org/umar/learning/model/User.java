@@ -30,18 +30,23 @@ public class User {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
+    @NotBlank(message = "Role is required")
+    private String role;
+
+
     //  Default constructor (required by JPA)
     public User() {
     }
 
     //  Parameterized constructor
-    public User(long id, String name, int age, String college,String email, String password) {
+    public User(long id, String name, int age, String college,String email, String password, String role) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.college = college;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     //  Getters and Setters
@@ -88,6 +93,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     // Optional: toString() for debugging
     @Override
@@ -99,6 +110,7 @@ public class User {
                 ", college='" + college + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
