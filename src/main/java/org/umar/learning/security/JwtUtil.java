@@ -15,14 +15,16 @@ import static io.jsonwebtoken.Jwts.parserBuilder;
 
         private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-        public String generateToken(String email) {
+        public String generateToken(String email, String role) {
             return Jwts.builder()
                     .setSubject(email)
+                    .claim("role", role)
                     .setIssuedAt(new Date())
                     .setExpiration(new Date(System.currentTimeMillis() + 86400000)) //1 day
                     .signWith(key)
                     .compact();
         }
+
 
         public boolean validateToken(String token) {
             try {
@@ -35,6 +37,10 @@ import static io.jsonwebtoken.Jwts.parserBuilder;
 
         public String extractUsername(String token) {
             return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
+        }
+
+        public String extractRole(String token){
+            return (String) Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().get("role");
         }
 
 

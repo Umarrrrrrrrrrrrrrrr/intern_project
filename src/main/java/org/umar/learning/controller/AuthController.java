@@ -28,8 +28,8 @@ public class AuthController {
         User user = userService.findbyEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
-            String token = jwtUtil.generateToken(user.getEmail());
-            return ResponseEntity.ok(Map.of("token", token));
+            String token = jwtUtil.generateToken(user.getEmail(), user.getRole());
+            return ResponseEntity.ok(Map.of("token", token, "role", user.getRole()));
         }
 
         return ResponseEntity.status(401).body(Map.of("error", "Invalid email or password"));
@@ -42,7 +42,27 @@ public class AuthController {
         if (existingUser != null) {
             return ResponseEntity.status(409).body(Map.of("error", "Email already in use"));
         }
+        //Assign role if not selected : default is user
+        if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("USER");
+        }
+
         User savedUser = userService.saveUser(user);
-        return ResponseEntity.ok(Map.of("token", jwtUtil.generateToken(savedUser.getEmail())));
+        String token = jwtUtil.generateToken(savedUser.getEmail(), savedUser.getRole());
+        return ResponseEntity.ok(Map.of("token", token, "role", savedUser.getRole()));
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<?> adminAccess(@RequestHeader("Authorization") String authHeader) {
+        String token = authHeader.replace("Bearer ", "");
+        if(jwtUtil.validateToken(token)){
+            String role = jwtUtil.extractRole(token);
+            if("ADMIN".equals(role)){
+                return ResponseEntity.ok("Welcome Admin!");
+            } else {
+                return ResponseEntity.status(403).body("Access Denied, Admins Only");
+            }
+        }
+        return ResponseEntity.status(401).body("Invalid or expired token");
     }
 }
